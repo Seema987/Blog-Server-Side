@@ -1,14 +1,14 @@
-CREATE DATABASE blog;
+CREATE DATABASE photoBlog;
 \c blog
 
-CREATE TABLE users(
+CREATE TABLE userInfo(
     id SERIAL PRIMARY KEY,
     name TEXT,
     email TEXT,
     password_digest TEXT
 );
 
-CREATE TABLE posts(
+CREATE TABLE blogPosts(
     id SERIAL PRIMARY KEY,
     title TEXT,
     description TEXT,
