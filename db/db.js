@@ -1,7 +1,7 @@
 const pg = require('pg')
 
 // change this to your actual local database name
-const localDbName = 'photoBlog'
+const localDbName = 'blog'
 
 let db;
 if (process.env.DATABASE_URL) {

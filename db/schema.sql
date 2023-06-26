@@ -5,7 +5,9 @@ CREATE TABLE userInfo(
     id SERIAL PRIMARY KEY,
     name TEXT,
     email TEXT,
-    password_digest TEXT
+    password_digest TEXT,
+    backgroundColor TEXT,
+    profilePicture TEXT
 );
 
 CREATE TABLE blogPosts(
@@ -16,3 +18,9 @@ CREATE TABLE blogPosts(
     date TEXT,
     user_id INTEGER
 );
+
+ALTER TABLE userInfo
+ADD  backgroundColor TEXT;
+
+ALTER TABLE userInfo
+ADD  profilePicture TEXT;
