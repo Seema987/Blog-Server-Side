@@ -7,11 +7,11 @@ const User = require('../models/user')
 
 
 router.post('/', (req, res)=>  {
-    const {username, email, password} = req.body
+    const {username, email, password, backgroundColor} = req.body
 
         const passwordDigest = bcrypt.hashSync(password, bcrypt.genSaltSync(12), null)
     User
-        .create(username, email, passwordDigest)
+        .create(username, email, passwordDigest, backgroundColor)
         .then(email => res.json(email))
 })
 

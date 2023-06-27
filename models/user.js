@@ -24,15 +24,15 @@ const User = {
             })
     },
 
-    create: (name, email, passwordDigest) => {
+    create: (name, email, passwordDigest, backgroundColor) => {
         const sql = `
-        INSERT INTO userInfo(name, email, password_digest)
-        VALUES ($1, $2, $3)
+        INSERT INTO userInfo(name, email, password_digest, backgroundcolor)
+        VALUES ($1, $2, $3, $4)
         RETURNING *
         `
 
         return db
-            .query(sql, [name, email, passwordDigest])
+            .query(sql, [name, email, passwordDigest, backgroundColor])
             .then(dbRes => dbRes.rows[0].email)
     }
 

@@ -13,24 +13,24 @@ const Blog = {
         //.............................********..........................................
 
     findById: (id) => {
-        const sql = 'SELECT * FROM blogPost WHERE id=$1'
+        const sql = 'SELECT * FROM blogPosts WHERE id=$1'
 
         return db
             .query(sql, [id])
-            .then(dbRes => dbRes.rows)
+            .then(dbRes => dbRes.rows[0])
     },
 
         //.............................********..........................................
 
-    addPost: (title, desc,img) =>{
+    addPost: (title, desc,img, date) =>{
         const sql = `
-        INSERT INTO blogPosts(title,description,img)
-        VALUES($1, $2, $3)
+        INSERT INTO blogPosts(title,description,img, date)
+        VALUES($1, $2, $3, $4)
         RETURNING *
     `
 
     return db
-        .query(sql, [title, desc, img])
+        .query(sql, [title, desc, img, date])
         .then(dbRes => dbRes.rows[0])
 },
 
@@ -45,6 +45,14 @@ const Blog = {
         return db
         .query(sql, [user_comment, post_id, user_id])
         .then(dbRes => dbRes.rows[0])
+    },
+
+    findByPostId: (id) => {
+        const sql = 'SELECT * FROM comments WHERE post_id=$1'
+
+        return db
+            .query(sql, [id])
+            .then(dbRes => dbRes.rows)
     },
 
     //.............................********..........................................

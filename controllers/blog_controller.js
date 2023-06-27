@@ -12,6 +12,7 @@ router.get('/', (req, res) => {
  //.............................********..........................................
 
 router.get('/:id', (req, res) => {
+    const id = req.params.id;
     Blog
     .findById(id)
     .then(post => res.json({result: 'successful', post}))
@@ -23,23 +24,33 @@ router.post('/', (req, res) => {
     const title = req.body.title
     const desc = req.body.desc
     const img = req.body.img
+    const date = req.body.date
 
     Blog
-        .addPost(title, desc, img)
+        .addPost(title, desc, img, date)
         .then(post => res.json(post))
 })
 
  //.............................********..........................................
 
-router.post('/:id', (req,  res) =>{
+router.post('/:id/comments', (req,  res) =>{
     const user_comment = req.body.user_comment
-    const post_id = req.params.post_id
-    const user_id = req.params.user_id
+    const post_id = req.params.id
+    const user_id = 1; // Need to add session
 
     Blog
         .commentPost(user_comment, post_id, user_id)
-        .then(comment => res.json(comment))
+        .then(comments => res.json({result: 'successful', comments}))
 })
+
+
+router.get('/:id/comments', (req, res) => {
+    const id = req.params.id;
+    Blog
+    .findByPostId(id)
+    .then(comments => res.json({result: 'successful', comments}))
+})
+
 
  //.............................********..........................................
 
