@@ -19,6 +19,13 @@ CREATE TABLE blogPosts(
     user_id INTEGER
 );
 
+CREATE TABLE comments(
+    id SERIAL PRIMARY KEY,
+    user_comment TEXT,
+    post_id INT,
+    user_id INT
+);
+
 ALTER TABLE userInfo
 ADD  backgroundColor TEXT;
 

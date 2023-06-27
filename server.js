@@ -22,6 +22,26 @@ app.use("/api/blogs", blogController);
 app.use("/api/users", userController);
 app.use("/api/sessions", sessionController);
 
+app.get('/api/blogs', (req, res) => {
+    res.json(post)
+})
+
+app.post('/api/blogs', (req, res) => {
+    const post = req.body
+    res.json({ message: `${post.title} was successfully added.` })
+})
+
+app.post('/api/blogs/:id', (req, res) =>{
+    const user_comment = req.body
+    const post_id = req.params.id
+    const user_id = req.params.id
+})
+
+// app.put('/api/blogs/:id', (req, res) => {
+//     const post = req.body
+//     const post_id = req.params.post_id
+//     res.json({ message: `${post.title} was successfully updated.` })
+// })
 
 
 if (process.env.NODE_ENV === 'production') {
