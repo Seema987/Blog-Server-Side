@@ -57,14 +57,14 @@ const Blog = {
 
     //.............................********..........................................
 
-    // update:(post_id, title, desc, img) => {
-    //     const sql = `
-    //     UPDATE blogPosts SET title = $1, description = $2, img = $3 where id=$4
-    //         RETURNING *
-    //     `
-    //    return db.query(sql, [title, desc, img, post_id])
-    //     .then(dbRes => dbRes.rows[0])
-    // },
+    update:(id, title, desc, img) => {
+        const sql = `
+        UPDATE blogPosts SET title = $1, description = $2, img = $3 where id=$4
+            RETURNING *
+        `
+       return db.query(sql, [title, desc, img, id])
+        .then(dbRes => dbRes.rows[0])
+    },
 
      //.............................********..........................................
 

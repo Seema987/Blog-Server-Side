@@ -57,16 +57,16 @@ router.get('/:id/comments', (req, res) => {
 
  //.............................********..........................................
 
-// router.post('/:id', (req, res) => {
-//     const post_id = req.params.post_id
-//     const title = req.body.title
-//     const desc = req.body.desc
-//     const img = req.body.img
+router.post('/:id/update', (req, res) => {
+    const id = req.params.id
+    const title = req.body.title
+    const desc = req.body.desc
+    const img = req.body.img
 
-//     Blog
-//         .update(post_id , title, desc, img)
-//         .then(posts => res.json(posts))
-// })
+    Blog
+        .update(id , title, desc, img)
+        .then(posts => res.json(posts))
+})
 
  //.............................********..........................................
 
