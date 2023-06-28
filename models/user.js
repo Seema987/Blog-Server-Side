@@ -9,7 +9,7 @@ const User = {
         return db
             .query(sql, [id])
             .then(dbRes => {
-                return dbRes.rows[0].email
+                return dbRes.rows[0]
             })
     },
     findByEmail: email => {

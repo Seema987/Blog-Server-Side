@@ -60,11 +60,12 @@ router.get('/:id/comments', (req, res) => {
 router.post('/:id/update', (req, res) => {
     const id = req.params.id
     const title = req.body.title
-    const desc = req.body.desc
+    const desc = req.body.description
     const img = req.body.img
+    const date = req.body.date
 
     Blog
-        .update(id , title, desc, img)
+        .update(id , title, desc, img, date)
         .then(posts => res.json(posts))
 })
 

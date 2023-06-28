@@ -57,12 +57,12 @@ const Blog = {
 
     //.............................********..........................................
 
-    update:(id, title, desc, img) => {
+    update:(id, title, desc, img, date) => {
         const sql = `
-        UPDATE blogPosts SET title = $1, description = $2, img = $3 where id=$4
+        UPDATE blogPosts SET title = $1, description = $2, img = $3, date = $4 where id=$5
             RETURNING *
         `
-       return db.query(sql, [title, desc, img, id])
+       return db.query(sql, [title, desc, img, date, id])
         .then(dbRes => dbRes.rows[0])
     },
 

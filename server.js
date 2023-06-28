@@ -18,19 +18,12 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT,() => console.log(`Server is listening here: http://localhost:${PORT}`))
 
 app.use(express.json())
-//app.use(cors())
+app.use(sessions)
 
 
 app.use("/api/blogs", blogController);
 app.use("/api/users", userController);
 app.use("/api/sessions", sessionController);
-
-
-// app.put('/api/blogs/:id', (req, res) => {
-//     const post = req.body
-//     const post_id = req.params.post_id
-//     res.json({ message: `${post.title} was successfully updated.` })
-// })
 
 
 if (process.env.NODE_ENV === 'production') {
