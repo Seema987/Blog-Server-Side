@@ -2,7 +2,7 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 const express = require('express')
-const cors = require('cors');
+//const cors = require('cors');
 
 const logger = require('./middlewares/logger.js')
 const sessions = require('./middlewares/sessions.js')
@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT,() => console.log(`Server is listening here: http://localhost:${PORT}`))
 
 app.use(express.json())
-app.use(cors())
+//app.use(cors())
 
 
 app.use("/api/blogs", blogController);

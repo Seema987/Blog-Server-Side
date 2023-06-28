@@ -25,6 +25,8 @@ router.post('/', (req, res) => {
     const desc = req.body.desc
     const img = req.body.img
     const date = req.body.date
+    //console.log(title, desc,img, date)
+    console.log(req.body)
 
     Blog
         .addPost(title, desc, img, date)
@@ -43,6 +45,7 @@ router.post('/:id/comments', (req,  res) =>{
         .then(comments => res.json({result: 'successful', comments}))
 })
 
+//.............................********..........................................
 
 router.get('/:id/comments', (req, res) => {
     const id = req.params.id;
@@ -54,24 +57,24 @@ router.get('/:id/comments', (req, res) => {
 
  //.............................********..........................................
 
-router.post('/:id', (req, res) => {
-    const post_id = req.params.post_id
-    const title = req.body.title
-    const desc = req.body.desc
-    const img = req.body.img
+// router.post('/:id', (req, res) => {
+//     const post_id = req.params.post_id
+//     const title = req.body.title
+//     const desc = req.body.desc
+//     const img = req.body.img
 
-    Blog
-        .update(post_id , title, desc, img)
-        .then(posts => res.json(posts))
-})
+//     Blog
+//         .update(post_id , title, desc, img)
+//         .then(posts => res.json(posts))
+// })
 
  //.............................********..........................................
 
-router.delete('/:id', (req, res) => {
-    const post_id = req.params.id
+router.delete('/:id/delete', (req, res) => {
+    const id = req.params.id
 
     Blog
-        .delete(post_id)
+        .delete(id)
         .then(post => res.json(post))
 })
 
